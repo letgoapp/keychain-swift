@@ -24,11 +24,10 @@ open class KeychainSwift {
   
   /**
   
-   Service name (shows up in Keychain Access)
+  Specifies the name of the service associated with the keychain item. It acts as a component of the key.
   
   */
   open var serviceName: String?
-  
   
   /**
    
