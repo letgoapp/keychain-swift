@@ -42,7 +42,7 @@ open class KeychainSwift {
   Specifies the name of the service associated with the keychain item. It acts as a component of the key.
   
   */
-  open var serviceName: String?
+  open var service: String?
   
   /**
    
@@ -118,7 +118,7 @@ open class KeychainSwift {
       
     query = addAccessGroupWhenPresent(query)
     query = addSynchronizableIfRequired(query, addingItems: true)
-    query = addServiceNameWhenPresent(query)
+    query = addServiceWhenPresent(query)
     lastQueryParameters = query
     
     lastResultCode = SecItemAdd(query as CFDictionary, nil)
@@ -188,7 +188,7 @@ open class KeychainSwift {
     
     query = addAccessGroupWhenPresent(query)
     query = addSynchronizableIfRequired(query, addingItems: false)
-    query = addServiceNameWhenPresent(query)
+    query = addServiceWhenPresent(query)
     lastQueryParameters = query
     
     var result: AnyObject?
@@ -274,11 +274,11 @@ open class KeychainSwift {
     return result
   }
   
-  func addServiceNameWhenPresent(_ items: [String: Any]) -> [String: Any] {
-    guard let serviceName = serviceName else { return items }
+  func addServiceWhenPresent(_ items: [String: Any]) -> [String: Any] {
+    guard let service = service else { return items }
 
     var result: [String: Any] = items
-    result[KeychainSwiftConstants.serviceName] = serviceName
+    result[KeychainSwiftConstants.service] = service
     return result
   }
   
@@ -453,7 +453,7 @@ public struct KeychainSwiftConstants {
   public static var returnData: String { return toString(kSecReturnData) }
   
   /// Represents a service associated with the keychain item
-  public static var serviceName: String { return toString(kSecAttrService) }
+  public static var service: String { return toString(kSecAttrService) }
   
   /// Used for specifying a value when setting a Keychain value.
   public static var valueData: String { return toString(kSecValueData) }

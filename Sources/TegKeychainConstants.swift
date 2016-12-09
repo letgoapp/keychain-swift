@@ -29,7 +29,7 @@ public struct KeychainSwiftConstants {
   public static var returnData: String { return toString(kSecReturnData) }
   
   /// Represents a service associated with the keychain item
-  public static var serviceName: String { return toString(kSecAttrService) }
+  public static var service: String { return toString(kSecAttrService) }
   
   /// Used for specifying a value when setting a Keychain value.
   public static var valueData: String { return toString(kSecValueData) }

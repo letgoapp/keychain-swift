@@ -33,6 +33,8 @@
 		7E3A6B851D3F6779007C5B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3A6B831D3F6779007C5B1F /* Main.storyboard */; };
 		7E3A6B8A1D3F67B1007C5B1F /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232B4C7A1BC29950001F2B7A /* KeychainSwift.framework */; };
 		7E3A6B8B1D3F67B1007C5B1F /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 232B4C7A1BC29950001F2B7A /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7E70E3331DFB582B0091654B /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E70E3311DFB58010091654B /* ServiceTests.swift */; };
+		7E70E3341DFB582B0091654B /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E70E3311DFB58010091654B /* ServiceTests.swift */; };
 		7E87495F1BDB83D00045CF75 /* AccessGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87495E1BDB83D00045CF75 /* AccessGroupTests.swift */; };
 		7ED6C9721B1C118F00FE8090 /* KeychainSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED6C9711B1C118F00FE8090 /* KeychainSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED6C9781B1C118F00FE8090 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED6C96C1B1C118F00FE8090 /* KeychainSwift.framework */; };
@@ -117,6 +119,7 @@
 		7E3A6B811D3F6779007C5B1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E3A6B841D3F6779007C5B1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E3A6B861D3F6779007C5B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E70E3311DFB58010091654B /* ServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
 		7E87495E1BDB83D00045CF75 /* AccessGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessGroupTests.swift; sourceTree = "<group>"; };
 		7ED6C96C1B1C118F00FE8090 /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED6C9701B1C118F00FE8090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -283,6 +286,7 @@
 				7ED6C9941B1C12A200FE8090 /* KeychainSwiftTests.swift */,
 				2B7E7C4C1B81A3EC00D1C3B9 /* KeychainSwiftPrefixedTests.swift */,
 				7ED6C9931B1C12A200FE8090 /* KeychainSwiftTests-Bridging-Header.h */,
+				7E70E3311DFB58010091654B /* ServiceTests.swift */,
 				7E282DD61CED212500B55133 /* SynchronizableTests.swift */,
 				7E3A6B611D3F62C2007C5B1F /* macOS Tests */,
 				7ED6C97C1B1C118F00FE8090 /* Supporting Files */,
@@ -547,7 +551,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Marketplacer;
 				TargetAttributes = {
 					232B4C791BC29950001F2B7A = {
@@ -722,6 +726,7 @@
 				7E3A6B6A1D3F62CC007C5B1F /* TegKeychainConstants.swift in Sources */,
 				7E3A6B681D3F62CC007C5B1F /* KeychainSwift.swift in Sources */,
 				7E3A6B721D3F66C0007C5B1F /* KeychainSwiftTests.swift in Sources */,
+				7E70E3341DFB582B0091654B /* ServiceTests.swift in Sources */,
 				7E3A6B731D3F66C0007C5B1F /* KeychainSwiftPrefixedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,6 +761,7 @@
 				7E87495F1BDB83D00045CF75 /* AccessGroupTests.swift in Sources */,
 				7E3A6B6D1D3F6431007C5B1F /* ClearTests.swift in Sources */,
 				7ED6C9981B1C12B500FE8090 /* TegKeychainConstants.swift in Sources */,
+				7E70E3331DFB582B0091654B /* ServiceTests.swift in Sources */,
 				7ED6C9951B1C12A200FE8090 /* KeychainSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
