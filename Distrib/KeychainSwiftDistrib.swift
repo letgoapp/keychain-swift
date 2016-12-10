@@ -39,7 +39,7 @@ open class KeychainSwift {
   
   /**
   
-  Specifies the name of the service associated with the keychain item. It acts as a component of the key.
+  Specifies the name of the service associated with the keychain item. It acts as a component of the key. Default: nil.
   
   */
   open var service: String?
@@ -235,6 +235,7 @@ open class KeychainSwift {
     
     query = addAccessGroupWhenPresent(query)
     query = addSynchronizableIfRequired(query, addingItems: false)
+    query = addServiceWhenPresent(query)
     lastQueryParameters = query
     
     lastResultCode = SecItemDelete(query as CFDictionary)
@@ -254,6 +255,7 @@ open class KeychainSwift {
     var query: [String: Any] = [ kSecClass as String : kSecClassGenericPassword ]
     query = addAccessGroupWhenPresent(query)
     query = addSynchronizableIfRequired(query, addingItems: false)
+    query = addServiceWhenPresent(query)
     lastQueryParameters = query
     
     lastResultCode = SecItemDelete(query as CFDictionary)

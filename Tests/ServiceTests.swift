@@ -39,22 +39,129 @@ class ServiceTests: XCTestCase {
     XCTAssertEqual("two", result["one"] as! String)
   }
   
-  func testSet() {
+  // MARK: - Set
+  
+  func testSet_addServiceParameter() {
     obj.service = "test service"
     obj.set("hello :)", forKey: "key 1")
     XCTAssertEqual("test service", obj.lastQueryParameters?["svce"] as! String)
   }
   
-  func testGet() {
+  func testSet_andGet() {
+    obj.service = "test service"
+    obj.set("hello :)", forKey: "key 1")
+    XCTAssertEqual("hello :)", obj.get("key 1")!)
+  }
+  
+  func testSet_andGet_twoServices() {
+    obj.service = "service 1"
+    obj.set("hello from service 1", forKey: "key 1")
+    
+    obj.service = "service 2"
+    obj.set("hello from service 2", forKey: "key 1")
+    
+    obj.service = "service 1"
+    XCTAssertEqual("hello from service 1", obj.get("key 1")!)
+    
+    obj.service = "service 2"
+    XCTAssertEqual("hello from service 2", obj.get("key 1")!)
+  }
+  
+  func testSet_andGet_itemWithServiceAndWithEmptyService() {
+    obj.service = "service 1"
+    obj.set("hello from service 1", forKey: "key 1")
+    
+    obj.service = nil
+    obj.set("hello from empty", forKey: "key 1")
+    
+    obj.service = "service 1"
+    XCTAssertNil(obj.get("key 1"))
+    
+    obj.service = nil
+    XCTAssertEqual("hello from empty", obj.get("key 1")!)
+  }
+  
+  // MARK: - Get
+
+  func testGet_addServiceParameter() {
     obj.service = "test service"
     _ = obj.get("key 1")
     XCTAssertEqual("test service", obj.lastQueryParameters?["svce"] as! String)
   }
   
-  func testDelete() {
+  func testGet_returnsNilForUnknownService() {
+    obj.service = "test service"
+    obj.set("hello :)", forKey: "key 1")
+    obj.service = "unknown"
+    XCTAssertNil(obj.get("key 1"))
+  }
+  
+  func testGet_returnsServiceForEmptyService() {
+    obj.service = "test service"
+    obj.set("hello :)", forKey: "key 1")
+    obj.service = nil
+    XCTAssertEqual("hello :)", obj.get("key 1")!)
+  }
+  
+  func testGet_returnsFirstServiceForEmptyServiceWhenMultipleServicesAreSupplied() {
+    obj.service = "service 1"
+    obj.set("hello from service 1", forKey: "key 1")
+    
+    obj.service = "service 2"
+    obj.set("hello from service 2", forKey: "key 1")
+    
+    obj.service = nil
+    XCTAssertEqual("hello from service 1", obj.get("key 1")!)
+  }
+  
+  // MARK: - Delete
+
+  func testDelete_addServiceParameter() {
     obj.service = "test service"
     obj.delete("key 1")
     XCTAssertEqual("test service", obj.lastQueryParameters?["svce"] as! String)
+  }
+  
+  func testDelete() {
+    obj.service = "test service"
+    obj.set("hello :)", forKey: "key 1")
+    obj.delete("key 1")
+    
+    XCTAssertNil(obj.get("key 1"))
+  }
+  
+  func testDelete_onlyKeyFromSpecifiedService() {
+    obj.service = "service 1"
+    obj.set("hello from service 1", forKey: "key 1")
+    
+    obj.service = "service 2"
+    obj.set("hello from service 2", forKey: "key 1")
+    
+    obj.service = "service 1"
+    obj.delete("key 1")
+    
+    obj.service = "service 1"
+    XCTAssertNil(obj.get("key 1"))
+    
+    obj.service = "service 2"
+    XCTAssertEqual("hello from service 2", obj.get("key 1")!)
+  }
+  
+  func testDelete_allItemsWithKeyWhenServiceIsEmpty() {
+    obj.service = "service 1"
+    obj.set("hello from service 1", forKey: "key 1")
+    
+    obj.service = "service 2"
+    obj.set("hello from service 2", forKey: "key 1")
+    
+    obj.service = nil
+    obj.delete("key 1")
+    
+    obj.service = "service 1"
+    XCTAssertNil(obj.get("key 1"))
+    
+    obj.service = "service 2"
+    XCTAssertNil(obj.get("key 2"))
   }
   
   func testClear() {
