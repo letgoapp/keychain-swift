@@ -164,9 +164,25 @@ class ServiceTests: XCTestCase {
     XCTAssertNil(obj.get("key 2"))
   }
   
-  func testClear() {
+  // MARK: - Clear
+
+  func testClear_addServiceParameter() {
     obj.service = "test service"
     obj.clear()
     XCTAssertEqual("test service", obj.lastQueryParameters?["svce"] as! String)
+  }
+  
+  func testClear_clearKeysWithAllServices() {
+    obj.service = "service 1"
+    obj.set("hello from service 1", forKey: "key 1")
+    
+    obj.service = "service 2"
+    obj.set("hello from service 2", forKey: "key 1")
+    
+    obj.service = "service 1"
+    obj.clear()
+    
+    XCTAssertNil(obj.get("key 1"))
+    XCTAssertNil(obj.get("key 2"))
   }
 }
